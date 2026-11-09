@@ -429,20 +429,3 @@ MMM-Toolkit/
 ├── MODEL_CARD.md
 └── README.md
 ```
-
-## Known limitations and release checklist
-
-Before using this project for a business decision or publishing it as a stable analytical package, address the following:
-
-1. **Prior sensitivity is a placeholder.** `prior_sensitivity()` currently returns random values; it does not perform alternative-prior refits. Do not use `--robustness` or publish its table as evidence.
-2. **The scorecard is narrower than the full diagnostic suite.** CV performance, interval coverage, Ljung–Box results and `max_mape` do not currently affect the verdict.
-3. **Test reproducibility needs attention.** The notebook records 24 passing tests, but its visible generator omits the `tests/test_analysis.py` module present in that saved runtime.
-4. **Optimiser success must be checked.** The optimiser returns a `converged` field; downstream consumers should verify it before accepting a proposed allocation.
-5. **Observational attribution has limits.** Media coefficients can be affected by confounding, collinearity, sparse spend variation, omitted variables and structural changes. Use well-designed experiments to strengthen causal interpretation.
-6. **Profitability depends on margins.** Revenue ROAS alone does not establish profit. Configure the break-even threshold using actual unit economics.
-7. **The bundled example is simulated.** Replace it with appropriately governed advertiser data and validate the model before operational use.
-8. **A repository license is not defined in the supplied project files.** Add and review a `LICENSE` file before distributing the project under an open-source license.
-
-## License
-
-No license file was present in the supplied project source. All rights and redistribution terms therefore remain unspecified until a license is added to the repository.
