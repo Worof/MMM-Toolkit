@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmm-toolkit"
+version = "1.0.0"
+description = "Bayesian Marketing Mix Modeling: validated fit, ROAS with uncertainty, constrained budget optimisation, executive report"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pymc-marketing>=1.3,<2",
+    "arviz",
+    "nutpie",
+    "pandas",
+    "numpy",
+    "scipy",
+    "statsmodels",
+    "scikit-learn",
+    "pydantic>=2",
+    "pandera",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+api = ["fastapi", "uvicorn"]
+dashboard = ["streamlit>=1.50"]
+tracking = ["mlflow"]
+
+[project.scripts]
+mmm-run = "mmm.pipeline:main"
+
+[tool.setuptools.packages.find]
+include = ["mmm*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = ["slow: end-to-end tests that fit a Bayesian model (about a minute)"]
